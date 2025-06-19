@@ -58,3 +58,58 @@ ngrok config add-authtoken <YOUR_AUTH_TOKEN>
 
 nohup ngrok http 8000 > ngrok.log 2>&1 & # Get the link from the log file
 ```
+
+# Ubuntu Setup and Rewards Bot Installation Guide
+
+```bash
+# Update and upgrade system packages
+sudo apt update && sudo apt upgrade -y
+
+# Install essential tools
+sudo apt install -y wget curl unzip git software-properties-common
+
+# Install Python3, pip, and venv
+sudo apt install -y python3 python3-pip python3-venv
+
+# Add Microsoft Edge repository and key
+curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
+sudo apt update
+
+# Install Microsoft Edge
+sudo apt install -y microsoft-edge-stable
+
+# Get installed Edge version
+EDGE_VERSION=$(microsoft-edge-stable --version | grep -oP '[0-9.]+')
+
+# Download matching Edge WebDriver
+wget "https://msedgedriver.azureedge.net/${EDGE_VERSION}/edgedriver_linux64.zip" -O msedgedriver.zip
+
+# Unzip and move WebDriver
+unzip msedgedriver.zip
+chmod +x msedgedriver
+sudo mv msedgedriver /usr/local/bin/
+
+# Clone your Rewards repository
+git clone https://github.com/misterworker/Rewards.git
+cd Rewards
+
+# Create and activate Python virtual environment
+python3 -m venv venv
+source venv/bin/activate
+
+# Upgrade pip and install dependencies
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+## Setup cron jobs
+```bash
+sudo apt update
+sudo apt install cron
+
+sudo service cron start
+
+crontab -e
+0 1 * * * /home/username/Rewards/venv/bin/python /home/username/Rewards/rewards.py # Paste at bottom of file
+```
