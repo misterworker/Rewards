@@ -11,7 +11,7 @@ EDGE_DRIVER_PATH = "/home/username/selenium_bot/msedgedriver"
 EDGE_PROFILE_PATH = "/home/username/selenium_bot/EdgeProfile"
 # EDGE_DRIVER_PATH = r"C:\Users\ethan\Downloads\edgedriver_win64\msedgedriver.exe"
 # EDGE_PROFILE_PATH = r"C:\Users\ethan\Documents\General\Automation\Rewards\EdgeProfile"
-EMAIL = ""
+EMAIL = "" # Fill this in
 
 # === Set up Edge Options ===
 options = Options()
