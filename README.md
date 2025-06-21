@@ -124,7 +124,7 @@ python automate_login.py
 ```
 
 ## Setup cron jobs
-Your job should now run at UTC+0 at 1am (9am in Singapore). It typically takes 10 to 15 minutes for the process to complete.
+Your job should now run at UTC+0 at 1am (9am in Singapore). It typically takes 2 to 3 minutes for the process to complete. (Longer if you have a shit VM)
 ```bash
 sudo apt update
 sudo apt install cron
